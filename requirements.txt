@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+torch
+torchvision
+torchaudio
+python-multipart
+pydub
+librosa
+numpy
