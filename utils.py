@@ -24,11 +24,11 @@ def extract_mel_from_waveform(
     """
 
     # 1) Mel Spectrogram 추출
+    # waveform: (num_samples,) → unsqueeze → (1, num_samples)
     mel_tensor = torchaudio.transforms.MelSpectrogram(
         sample_rate=sr,
         n_mels=n_mels
-    )(waveform.unsqueeze(0))  # waveform: (num_samples,) → unsqueeze → (1,num_samples)
-                              # mel_tensor: (1, n_mels, time_steps)
+    )(waveform.unsqueeze(0))  # mel_tensor: (1, n_mels, time_steps)
 
     # 2) dB 스케일 변환
     mel_db = torchaudio.transforms.AmplitudeToDB()(mel_tensor)  # (1, n_mels, time_steps)
